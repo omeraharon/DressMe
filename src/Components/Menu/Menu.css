@@ -1,0 +1,18 @@
+#menu {
+    border-bottom: 1px solid var(--light-purple);
+}
+
+#menu .navbar-brand {
+    color: var(--purple)
+}
+
+.menu-link {
+    color: var(--black);
+    text-decoration: none;
+    padding-left: 1vw;
+}
+
+.menu-link:active, .menu-link:focus {
+    color: var(--purple);
+    font-weight: 500;
+} 
