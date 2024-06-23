@@ -1,0 +1,47 @@
+
+h2, h3 {
+    padding-top: 2vh;
+    color: var(--black);
+    font-size: 24px;
+}
+
+.completed-sets-link {
+    color: var(--purple);
+}
+
+.clothing-items-count {
+    display: flex;
+    gap: 3vw;
+    justify-content: space-between;
+    padding: 0 5vw 0 5vw;
+}
+
+.clothing-item-count {
+    color: var(--black);
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clothing-item-count b {
+    color: var(--purple);
+    font-size: 40px;
+}
+
+.clothing-item-button {
+    background-color: var(--light-gray);
+    border: 1px solid var(--light-purple);
+    color: var(--purple);
+}
+
+.clothing-item-button:hover {
+    background-color: transparent;
+    color: var(--black);
+    border: 1px solid var(--light-purple);
+}
+
+.clothing-item-link {
+    color: var(--purple);
+    text-decoration: none;
+}

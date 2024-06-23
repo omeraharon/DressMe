@@ -7,10 +7,10 @@ import PageNotFound from "./Components/PageNotFound/PageNotFound";
 import { Routes as RoutesEnum } from "./Enums/Routes";
 import ClothingItems from "./Components/ClothingItems/ClothingItems";
 import MySets from "./Components/MySets/MySets";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect } from "react";
 import clothingItemsStore from "./Store/ClothingItemsStore";
 import { persistStore } from "./Services/MobxService";
-import ClothingItemModel from "./Models/ClothingItemModel";
+import { ClothingItemsTypes } from "./Enums/ClothingItems";
 
 const HandleHydrate = () => {
     return new Promise(async (resolve) => {
@@ -20,10 +20,6 @@ const HandleHydrate = () => {
 };
 
 function Layout() {
-    const [clothingItemsList, setClothingItemsList]: [ClothingItemModel[], Dispatch<SetStateAction<ClothingItemModel[]>>] = useState<
-        ClothingItemModel[]
-    >([]);
-
     useEffect(() => {
         HandleHydrate();
         getClothingItems();
@@ -31,26 +27,27 @@ function Layout() {
 
     const getClothingItems = async () => {
         try {
-            const res: any = (await fetch("https://f32cf30e-6939-45f6-b650-40d5b43dc7f1.mock.pstmn.io/clothes")).json();
-            const clothingItems = await res;
-            clothingItems.length && setClothingItemsList(clothingItems);
+            const res: any = await (await fetch("https://f32cf30e-6939-45f6-b650-40d5b43dc7f1.mock.pstmn.io/clothes")).json();
+            res.length && clothingItemsStore.setClothingItems(res);
         } catch (err) {
             console.log(err);
         }
     };
 
     return (
-        <>
-            <BrowserRouter>
-                <Menu />
+        <BrowserRouter>
+            <Menu />
+            <div className="layout">
                 <Routes>
                     <Route path={RoutesEnum.HOME} element={<Home />} />
-                    <Route path={RoutesEnum.CLOTHING_ITEMS} element={<ClothingItems clothingItemsList={clothingItemsList} />} />
+                    <Route path={RoutesEnum.CLOTHING_ITEMS} element={<ClothingItems />}>
+                        <Route path=":type" element={<ClothingItems />} />
+                    </Route>
                     <Route path={RoutesEnum.MY_SETS} element={<MySets />} />
                     <Route path="*" element={<PageNotFound />} />
                 </Routes>
-            </BrowserRouter>
-        </>
+            </div>
+        </BrowserRouter>
     );
 }
 

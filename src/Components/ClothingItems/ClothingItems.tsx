@@ -7,17 +7,20 @@ import ClothingItemModel from "../../Models/ClothingItemModel";
 import ClothingItemCard from "../ClothingItemCard/ClothingItemCard";
 
 import "./ClothingItems.css";
-interface ClothingItemsProps {
-    clothingItemsList: ClothingItemModel[];
-}
+import { useParams } from "react-router-dom";
+import { getItemsByType } from "../../Services/ClothingItemsService";
+import clothingItemsStore from "../../Store/ClothingItemsStore";
 
-const ClothingItems: React.FC<ClothingItemsProps> = ({ clothingItemsList }) => {
+const ClothingItems: React.FC = () => {
+    const { type } = useParams();
+    const clothingItemsByType = getItemsByType(type || "");
+    const clothingItems = clothingItemsByType.length ? clothingItemsByType : clothingItemsStore.getClothingItems;
     return (
         <Col>
             <RouteTitle title={RouteNames.CLOTHING_ITEMS} />
             <section className="clothing-items-container">
-                {clothingItemsList.length ? (
-                    clothingItemsList.map((clothingItem: ClothingItemModel, index: number) => (
+                {clothingItems.length ? (
+                    clothingItems.map((clothingItem: ClothingItemModel, index: number) => (
                         <ClothingItemCard clothingItem={clothingItem} key={clothingItem.id || index} />
                     ))
                 ) : (
