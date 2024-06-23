@@ -3,7 +3,7 @@
 }
 
 #menu .navbar-brand {
-    color: var(--purple)
+    font-weight: 500;
 }
 
 .menu-link {
