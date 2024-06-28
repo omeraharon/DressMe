@@ -1,30 +1,15 @@
-# React + TypeScript + Vite
+# Dress me
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Navigation
+Navigation from side menu.
+You can navigate to the clothing items screen through the main screen according to the type of item.
+Each selection of an item of clothing for a set will navigate to the next type to be selected.
 
-Currently, two official plugins are available:
+# Clothing items
+In addition to filtering by color and size, I also added filtering by item type.
+Each item type filter affects the url.
+On each card I used a generic image.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+# General
+Using mobx as state management
+Website optimized for mobile only.
