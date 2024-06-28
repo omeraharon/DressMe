@@ -4,12 +4,15 @@ import Card from "react-bootstrap/Card";
 import "./ClothingItemCard.css";
 import { ClothingItemsTypes } from "../../Enums/ClothingItems";
 import { Images } from "../../Services/Images";
+import { observer } from "mobx-react-lite";
 
 interface ClothingItemCardProps {
     clothingItem: ClothingItemModel;
+    onClickItem?: (clothingItem: ClothingItemModel) => void;
+    buttonLabel?: string;
 }
 
-const ClothingItemCard: React.FC<ClothingItemCardProps> = ({ clothingItem }) => {
+const ClothingItemCard: React.FC<ClothingItemCardProps> = ({ clothingItem, onClickItem, buttonLabel = "" }) => {
     const getSvgByType = (type: string) => {
         let cardIconSvg = "";
         switch (type) {
@@ -39,10 +42,14 @@ const ClothingItemCard: React.FC<ClothingItemCardProps> = ({ clothingItem }) => 
                 <Card.Text>
                     <b>Size:</b> {clothingItem.size || ""}
                 </Card.Text>
-                <Button className="clothing-item-card-button">Add Item</Button>
+                {buttonLabel && (
+                    <Button className={`clothing-item-card-button`} onClick={() => onClickItem && onClickItem(clothingItem)}>
+                        {buttonLabel}
+                    </Button>
+                )}
             </Card.Body>
         </Card>
     );
 };
 
-export default ClothingItemCard;
+export default observer(ClothingItemCard);

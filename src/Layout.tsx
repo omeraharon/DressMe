@@ -10,7 +10,6 @@ import MySets from "./Components/MySets/MySets";
 import { useEffect } from "react";
 import clothingItemsStore from "./Store/ClothingItemsStore";
 import { persistStore } from "./Services/MobxService";
-import { ClothingItemsTypes } from "./Enums/ClothingItems";
 
 const HandleHydrate = () => {
     return new Promise(async (resolve) => {

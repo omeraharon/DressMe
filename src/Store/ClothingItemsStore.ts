@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx"
 import { persistStore } from "../Services/MobxService";
 import ClothingItemModel from "../Models/ClothingItemModel";
+import ClothingItemSet from "../Models/ClothingItemSetModel";
 
 class ClothingItemsStore {
 
@@ -9,7 +10,7 @@ class ClothingItemsStore {
     }
 
     clothingItems: ClothingItemModel[] = []
-    clothingSets: ClothingItemModel[] = [];
+    clothingSets: ClothingItemSet[] = [];
 
     async loadStoreData() {
         await persistStore(this, this.persist_data, "ClothingItemsStore");
@@ -29,8 +30,12 @@ class ClothingItemsStore {
         this.clothingItems = clothingItems;
     }
 
-    setClothingSets(clothingSets: ClothingItemModel[]) {
+    setClothingSets(clothingSets: ClothingItemSet[]) {
         this.clothingSets = clothingSets;
+    }
+
+    deleteSet(id: number) {
+        this.clothingSets = this.clothingSets.filter(set => set.id !== id)
     }
    
 }

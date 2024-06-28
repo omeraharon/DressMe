@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
-import { RouteNames } from "../../Enums/Routes";
+import { RouteNames, Routes } from "../../Enums/Routes";
 
 const Menu = () => {
     return (
@@ -14,13 +14,13 @@ const Menu = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Link className="menu-link" to="/">
+                            <Link className="menu-link" to={Routes.HOME}>
                                 {RouteNames.HOME}
                             </Link>
-                            <Link className="menu-link" to="/clothing-items">
+                            <Link className="menu-link" to={Routes.CLOTHING_ITEMS}>
                                 {RouteNames.CLOTHING_ITEMS}
                             </Link>
-                            <Link className="menu-link" to="/my-sets">
+                            <Link className="menu-link" to={Routes.MY_SETS}>
                                 {RouteNames.MY_SETS}
                             </Link>
                         </Nav>

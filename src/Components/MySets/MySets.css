@@ -1,0 +1,15 @@
+.set-card-button {
+    background-color: var(--dark-purple);
+    border: none;
+    font-weight: 600;
+}
+
+.set {
+    margin-top: 5vh;
+}
+
+.set-container {
+    display: flex;
+    gap: 1vw;
+    margin: 2vh 0 2vh 0;
+}
